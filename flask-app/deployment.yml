@@ -17,15 +17,16 @@ spec:
       containers:
       - name: app1
         image: flask:v1
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 5000
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: flaskapp
+  name: flaskapp-service
   labels:
-    service: flaskapp
+    service: flaskapp-service
 spec:
   selector:
     app: flaskapp
@@ -37,9 +38,9 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: flaskapp
+  name: flaskapp-ingress
   annotations:
 spec:
   backend:
-    serviceName: flaskapp
+    serviceName: flaskapp-service
     servicePort: 5000
