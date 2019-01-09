@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: app1
-        image: flask:v1
+        image: deepaknautiyal/flask:v1
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 5000
